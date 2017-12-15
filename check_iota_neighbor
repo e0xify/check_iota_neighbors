@@ -1,0 +1,20 @@
+#!/bin/bash
+INDEX=0
+iota=$(curl -s http://localhost:14265 -X POST -H 'Content-Type: application/json' -H 'X-IOTA-API-Version: 1.4' -d '{"command": "getNeighbors"}')
+debug=$(echo $iota | jq '.neighbors[].numberOfAllTransactions')
+neigh=$(echo $iota | jq '.neighbors[].address')
+
+for x in $debug;
+do
+        if [ "$x" -eq "0" ]; then
+        current=$(echo $iota | jq '.neighbors['$INDEX'].address')
+        echo "Neighbour $current seems to be offline!";
+        exit 2;
+        fi
+        let INDEX=${INDEX}+1
+done
+
+echo "Looks Fine! All Neighbours online!";
+exit 0
+
+
