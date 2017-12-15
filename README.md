@@ -7,4 +7,4 @@ fetches the value "numberofalltransactions".
 if numberofalltransaction is equal to 0 - critical alert gets generated including nodeip/adress
 
 
-[img]https://www2.pic-upload.de/img/34478242/nagios.png[/img]
+![alt text]https://www2.pic-upload.de/img/34478242/nagios.png
